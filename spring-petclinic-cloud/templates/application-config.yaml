@@ -42,15 +42,13 @@ data:
         web:
           exposure:
             include: '*'
-      metrics:
-        export:
-          prometheus:
-            enabled: true
 
     customers-service-id: http://customers-service.spring-petclinic.svc.cluster.local:8080
     visits-service-id: http://vists-service.spring-petclinic.svc.cluster.local:8080
 
     spring:
+      reactor:
+        context-propagation: AUTO
       boot:
         admin:
           client:
@@ -75,8 +73,6 @@ data:
           override-none: true
       messages:
         basename: messages/messages
-      zipkin:
-        base-url: http://zipkin-collector.spring-petclinic.svc.cluster.local:9411
       cloud:
         kubernetes:
           discovery:
